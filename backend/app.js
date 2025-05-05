@@ -23,15 +23,18 @@ app.use(
     origin: process.env.ORIGIN,
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
+    
   })
 );
 
 
 
 
+
 app.use("/api/v1", authRouter);
 
-// app.use(authenticationMiddleware);
+app.use(authenticationMiddleware);
 
 
 app.use("/api/v1/courses", courseRouter);

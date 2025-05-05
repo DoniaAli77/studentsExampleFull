@@ -119,7 +119,11 @@ const userController = {
     }
   },
   getCurrentUser: (req, res) => {
+    if(!req.user){
+      throw new Error("not logged in");
+    }
     res.send(req.user);
+    
   },
   
 };

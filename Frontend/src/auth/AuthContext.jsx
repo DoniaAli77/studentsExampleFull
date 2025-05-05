@@ -1,20 +1,21 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   // Fetch current user on app load
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/users/current", {
+        const res = await axios.get("http://localhost:3000/api/v1/users/profile", {
           withCredentials: true,
         });
         setUser(res.data);
-      } catch {
+      } catch(e) {
+        console.log(e)
         setUser(null);
       } finally {
         setLoading(false);
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }) => {
       }
     );
     setUser(null);
-    navigate("/login");
+  ;
   };
 
   if (loading) return <div>Loading...</div>;

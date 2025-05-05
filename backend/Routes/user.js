@@ -10,7 +10,7 @@ router.get("/",userController.getAllUsers);
 
 
 // * Get current user
-router.get('/profile ',authorizationMiddleware(['student']), userController.getCurrentUser);
+router.get('/profile', userController.getCurrentUser);
 
 // * Get a user by id
 // Place after "/current" so that "current" is not treated as an id
