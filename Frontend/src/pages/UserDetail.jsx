@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 
 export default function UserDetail() {
   const { id } = useParams();
+
+  const navigate =useNavigate()
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -26,6 +28,9 @@ export default function UserDetail() {
       <p><strong>Name:</strong> {user.name}</p>
       <p><strong>Email:</strong> {user.email}</p>
       <p><strong>Role:</strong> {user.role}</p>
+      <button onClick={()=>navigate(`/users/${id}/edit`)}> Edit</button>
+      {user.role=='student'?<button onClick={()=>navigate(`/mycourses`)}> view courses</button>:<></>} 
+
     </div>
   );
 }

@@ -7,8 +7,8 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-blue-600 text-white p-4 flex justify-between">
-        <h1 className="text-lg font-semibold">MERN Dashboard</h1>
-        <nav className="space-x-4">
+        <h1 className="text-lg font-semibold">Portal Dashboard</h1>
+        <nav className="space-x-8">
           <Link to="/">Home</Link>
           {user?.role === "admin" && <Link to="/users">Users</Link>}
           {user?.role === "admin" && <Link to="/courses">Courses</Link>}
