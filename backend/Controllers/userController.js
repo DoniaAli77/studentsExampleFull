@@ -79,6 +79,13 @@ const userController = {
       res.status(500).json({ message: "Server error" });
     }
   },
+  logout: async (req, res) => {
+    try {
+      // logic to remove cookies
+    } catch (e) {
+      res.send(e);
+    }
+  },
   getAllUsers: async (req, res) => {
     try {
       const users = await userModel.find();
@@ -97,7 +104,6 @@ const userController = {
   },
   updateUser: async (req, res) => {
     try {
-  
       const user = await userModel.findByIdAndUpdate(
         req.params.id,
         { name: req.body.name },
@@ -113,21 +119,17 @@ const userController = {
   deleteUser: async (req, res) => {
     try {
       const user = await userModel.findByIdAndDelete(req.params.id);
-      return res.status(200).json( "User deleted successfully" );
+      return res.status(200).json("User deleted successfully");
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
   },
   getCurrentUser: (req, res) => {
-    if(!req.user){
+    if (!req.user) {
       throw new Error("not logged in");
     }
     res.send(req.user);
-    
   },
-  
 };
-
-
 
 module.exports = userController;

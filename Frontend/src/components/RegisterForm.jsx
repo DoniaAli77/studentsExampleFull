@@ -81,7 +81,7 @@ export default function RegisterForm() {
         Register
       </button>
       <br/>
-      <p>{message}</p>
+      <p color="green">{message}</p>
     </form>
   );
 }
